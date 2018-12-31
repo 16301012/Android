@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity" >
+
+    <!--
+     android:groupIndicator="@null" 取消默认图片
+     android:childIndicatorLeft 设置孩子左边间距
+     android:dividerHeight 这个高度一定要设置，不然显示不出来分割线，估计默认为0 吧
+     android:childDivider="@drawable/child_bg" 这个直接引color,或者图片会导致整个孩子背景都为这个颜色
+    -->
+
+    <com.example.jasper.ccxapp.widget.StickyLayout
+        android:id="@+id/sticky_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/sticky_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/main_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/currentUserName_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/my_avatar_civ"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="320dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="3dp"
+                android:text="用户1"
+                android:textColor="#111055"
+                android:textSize="14.0sp"
+                android:textStyle="bold" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/my_avatar_civ"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_launcher"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/sticky_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+            <!--下拉框-->
+            <FrameLayout
+                android:id="@+id/fl_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_bar"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+
+                <RelativeLayout
+                    android:id="@+id/ll_lowwarn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/singleline_item_bg"
+                    android:minHeight="40dp">
+
+                    <TextView
+                        android:id="@+id/pre_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="我的群组"
+                        android:textColor="#000000"
+                        android:textSize="20sp"></TextView>
+
+                    <TextView
+                        android:id="@+id/value_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toEndOf="@id/pre_tv"
+                        android:background="@drawable/edittext1"
+                        android:gravity="start|center"
+                        android:minHeight="40dp"
+                        android:paddingStart="1dp"
+                        android:paddingEnd="5dp"
+                        android:textColor="#ff000000"
+                        android:textSize="20sp"></TextView>
+
+
+                    <ImageButton
+                        android:id="@+id/dropdown_ib"
+                        android:layout_width="36px"
+                        android:layout_height="20px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/ic_down_arrow" />
+                </RelativeLayout>
+
+
+            </FrameLayout>
+
+            <com.example.jasper.ccxapp.widget.PinnedHeaderExpandableListView
+                android:id="@+id/expandablelist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@null"
+                android:childDivider="@drawable/child_bg"
+                android:childIndicatorLeft="0dp"
+                android:divider="@color/white"
+                android:dividerHeight="1dp"
+                android:groupIndicator="@null"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"></com.example.jasper.ccxapp.widget.PinnedHeaderExpandableListView>
+        </LinearLayout>
+    </com.example.jasper.ccxapp.widget.StickyLayout>
+
+    <include
+        layout="@layout/activity_main_left"
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:gravity="center_horizontal" >
+
+    </include>
+
+</android.support.v4.widget.DrawerLayout>
